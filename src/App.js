@@ -29,8 +29,7 @@ function App() {
     if (foodsBDD === null) {
       localStorage.setItem("foods", JSON.stringify([]));
       foodsBDD = [];
-    }
-    // setFoods(JSON.parse(foodsBDD));
+    } else { setFoods(JSON.parse(foodsBDD)) };
   }, [])
 
   useEffect(() => {
