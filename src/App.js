@@ -14,6 +14,10 @@ function App() {
   function search(input) {
     axios.get(`https://world.openfoodfacts.org/api/v0/product/${input}.json`).then(datas => {
       if (datas.status === 200 && datas.data.status === 1) {
+        if(foods.filter(x=>x.id===datas.data.product.id).length > 0){
+          setInput("")
+          return alert("Produit existe") 
+        }
         let tmp = [...foods]
         tmp.push(datas.data.product)
         setFoods(tmp)
